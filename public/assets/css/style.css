@@ -1,0 +1,11 @@
+.clearfix:after {
+    content:" ";
+    display: table;
+    clear: both;
+}
+
+.list-item-p {
+    position: relative;
+    top: 50%;
+    margin: 0;
+}
