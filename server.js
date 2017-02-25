@@ -3,8 +3,9 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/burgerController.js');
+const db = require('./models')
 
-const app = express();
+const app = require('express')();
 const port = process.env.PORT || 3000;
 
 
@@ -25,7 +26,9 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+db.sequelize.sync({force: true}).then(() => {
+    app.listen(port);
+});
 
 //Use routes defined in burger_controller
 app.use("/", routes);
-app.listen(port);
